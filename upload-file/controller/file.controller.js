@@ -1,7 +1,7 @@
 const fs = require("fs");
 const baseUrl = "/api/files/";
 
-const getListFiles = (req, res) => {
+const getListFiles = (_, res) => {
   const directoryPath = __basedir + "/resources/static/assets/uploads/";
   console.log(directoryPath);
   fs.readdir(directoryPath, function (err, files) {

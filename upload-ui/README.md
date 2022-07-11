@@ -1,5 +1,25 @@
 # UploadUi
 
+## Start up application
+Expected environment
+```shell
+~  node -v
+v14.20.0
+
+~  npm list -g --depth=0
+C:\bin\nodejs -> .\
+├── @angular/cli@12.2.6
+├── corepack@0.10.0
+└── npm@8.1.2
+```
+
+Locally run
+```shell
+npm i
+
+npm run start
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
 
 ## Development server
