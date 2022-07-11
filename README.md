@@ -1,3 +1,12 @@
+# Angular Download File
+
+```bash
+docker run -p 8080:8080 oreynaldocl/upload-file
+
+docker run -p 80:80 oreynaldocl/upload-ui
+
+```
+
 # angular-nodejs-docker-compose
 Angular Nodejs Local development with Docker compose 
 
