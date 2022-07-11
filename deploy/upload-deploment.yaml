@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: upload-file-ui-service
+spec:
+  selector:
+    app: upload-file-ui
+  type: LoadBalancer
+  ports:
+  - protocol: 'TCP'
+    port: 4201
+    targetPort: 80 #internal port
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upload-file-ui-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: upload-file-ui
+  template:
+    metadata:
+      labels:
+        app: upload-file-ui
+    spec:
+      containers:
+        - name: upload-file-ui
+          image: oreynaldocl/upload-ui:latest
+        - name: upload-file-api
+          image: oreynaldocl/upload-file:latest
