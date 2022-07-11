@@ -2,7 +2,7 @@
 # build angular app
 IMAGE_API=oreynaldocl/upload-ui
 
-VERSION=1
+VERSION=2
 
 cd upload-ui
 npm i

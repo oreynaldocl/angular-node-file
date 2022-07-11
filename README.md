@@ -6,6 +6,9 @@ docker run -p 8080:8080 oreynaldocl/upload-file
 docker run -p 80:80 oreynaldocl/upload-ui
 
 ```
+## Resources
+* https://www.bezkoder.com/node-js-express-download-file/
+
 
 # angular-nodejs-docker-compose
 Angular Nodejs Local development with Docker compose 

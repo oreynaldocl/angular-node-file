@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { File } from './models';
+import { faCoffee, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { Subject, timer } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 
+import { File } from './models';
 import { UploadService } from './services/upload.service';
 
 @Component({
@@ -15,6 +16,8 @@ export class AppComponent {
   downloadForm = new FormGroup({
     fileName: new FormControl('', [Validators.nullValidator, Validators.required]),
   });
+  downloading = false;
+  faSpinner = faSpinner;
 
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -36,6 +39,26 @@ export class AppComponent {
   }
 
   onRequestFile(): void {
-    console.log(this.downloadForm.value);
+    this.downloading = true;
+    const {fileName} = this.downloadForm.value;
+    console.log(fileName);
+
+    timer(2*1000).pipe(
+      takeUntil(this.destroy$),
+      tap(() => {
+        this.downloading = false;
+      }),
+    ).subscribe(() => {
+      const link = document.createElement('a');
+      link.setAttribute('target', '_blank');
+      link.setAttribute('href', `/api/files/${fileName}`);
+      link.setAttribute('download', `products.csv`);
+
+      const download = document.getElementById("download");
+      download?.appendChild(link);
+
+      link.click();
+      link.remove();
+    });
   }
 }

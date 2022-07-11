@@ -13,9 +13,21 @@
       </div>
       <div class="col-md-5 d-flex align-items-end">
         <div>
-          <button class="mt-2 mt-lg-0" type="submit" [disabled]="!downloadForm.valid" class="btn btn-primary">Download</button>
+          <button class="mt-2 mt-lg-0" type="submit" [disabled]="!downloadForm.valid && !downloading" class="btn btn-primary">Download</button>
+          <div class="mx-0 mx-lg-0">
+            <fa-icon
+              *ngIf="downloading"
+              size="2x"
+              [icon]="faSpinner"
+              [pulse]="true"
+            ></fa-icon>
+          </div>
         </div>
       </div>
     </div>
   </form>
+    <a href="/api/files/test.txt" target="_blank">Download</a>
+    <!-- it is possible to list and user can click (required a progress bar)  -->
+  <hr>
+
 </div>
